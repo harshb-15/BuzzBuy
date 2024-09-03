@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from 'react-router-dom';
 function Navbar() {
     return (
         <>
@@ -39,7 +40,9 @@ function Navbar() {
 
                     <div class="navbar-end">
                         <a class="navbar-item">Search</a>
-                        <a class="navbar-item">Cart</a>
+                        <Link to="cart" class="navbar-item">
+                            Cart
+                        </Link>
                         <a class="navbar-item">Sign In</a>
                         <div class="navbar-item">
                             <div class="buttons">

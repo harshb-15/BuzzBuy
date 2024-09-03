@@ -1,14 +1,14 @@
-import Navbar from './components/Navbar';
-import CheckedCategoriesProvider from './providers/CheckedCategoriesProvider';
-import MainBody from './components/MainBody';
+import { Routes, Route } from 'react-router-dom';
+import HomeScreen from './pages/HomeScreen';
+import CartScreen from './pages/CartScreen';
 
 function App() {
     return (
         <>
-            <Navbar></Navbar>
-            <CheckedCategoriesProvider>
-                <MainBody></MainBody>
-            </CheckedCategoriesProvider>
+            <Routes>
+                <Route path="/" element={<HomeScreen></HomeScreen>} />
+                <Route path="/cart" element={<CartScreen></CartScreen>} />
+            </Routes>
         </>
     );
 }
