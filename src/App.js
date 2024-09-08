@@ -6,8 +6,8 @@ function App() {
     return (
         <>
             <Routes>
-                <Route path="/" element={<HomeScreen></HomeScreen>} />
-                <Route path="/cart" element={<CartScreen></CartScreen>} />
+                <Route path="/BuzzBuy" element={<HomeScreen></HomeScreen>} />
+                <Route path="/BuzzBuy/cart" element={<CartScreen></CartScreen>} />
             </Routes>
         </>
     );
