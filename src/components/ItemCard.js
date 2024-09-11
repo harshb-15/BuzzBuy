@@ -1,7 +1,9 @@
-import './../css/styles.css'
+import { useCart } from '../providers/CartProvider';
+import './../css/styles.css';
 import StarRating from './StarRating';
-function ItemCard({ id, title, price, description, category, image, rating })
-{
+function ItemCard({ id, title, price, description, category, image, rating }) {
+    const { addItemToCart, checkItemInCart, removeItemFromCart } = useCart();
+    const inCart = checkItemInCart(id) !== -1;
     return (
         <div class="card">
             <div class="card-image p-4">
@@ -23,6 +25,22 @@ function ItemCard({ id, title, price, description, category, image, rating })
                     <StarRating
                         selectedStars={Math.round(rating['rate'])}
                     ></StarRating>
+                    <br></br>
+                    {inCart === true ? (
+                        <button
+                            class="button is-primary"
+                            onClick={() => removeItemFromCart(id)}
+                        >
+                            Remove from Cart
+                        </button>
+                    ) : (
+                        <button
+                            class="button is-primary"
+                            onClick={() => addItemToCart(id)}
+                        >
+                            Add to Cart
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

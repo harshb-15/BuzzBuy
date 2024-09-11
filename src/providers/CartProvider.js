@@ -6,10 +6,9 @@ function CartProvider({ children }) {
     const { getItemFromId } = useData();
     const [cart, setCart] = useState({
         items: [
-            { id: 1, quantity: 2, itemTotal: 219.9 },
-            { id: 2, quantity: 1, itemTotal: 22.3 },
+            
         ],
-        cartTotal: 219.9 + 22.3,
+        cartTotal: 0,
     });
     function checkItemInCart(itemId) {
         let foundInCart = -1;
@@ -26,7 +25,6 @@ function CartProvider({ children }) {
         let newCart = { ...cart };
         const itemFromData = getItemFromId(itemId);
         let foundInCart = checkItemInCart(itemId);
-        console.log(foundInCart);
         let previousItemTotal = 0;
         if (foundInCart === -1) {
             newCart['items'].push({
@@ -45,10 +43,25 @@ function CartProvider({ children }) {
         newCart['cartTotal'] =
             Math.round((newCart['cartTotal'] + Number.EPSILON) * 100) / 100;
         setCart(newCart);
-        console.log(newCart);
     }
+    function findNewTotal(newCart) {
+        let newCartTotal = 0;
+        newCart.items.map((val, i) => {
+            newCartTotal += val.itemTotal;
+        });
+        return newCartTotal;
+    }
+    function removeItemFromCart(itemId)
+    {
+        let newCart = { ...cart };
+        let newItems = newCart.items.filter((val, i) => val.id !== itemId);
+        newCart.items = newItems;
+        let newCartTotal = findNewTotal(newCart);
+        newCart.cartTotal = newCartTotal;
+        setCart(newCart);
+    } 
     return (
-        <CartContext.Provider value={{ cart, addItemToCart }}>
+        <CartContext.Provider value={{ cart, addItemToCart, removeItemFromCart, checkItemInCart}}>
             {children}
         </CartContext.Provider>
     );

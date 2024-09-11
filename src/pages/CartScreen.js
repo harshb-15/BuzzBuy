@@ -2,7 +2,7 @@ import { useCart } from '../providers/CartProvider';
 import { useData } from '../providers/DataProvider';
 
 function CartScreen() {
-    const { cart, addItemToCart } = useCart();
+    const { cart, addItemToCart, removeItemFromCart } = useCart();
     const { getItemFromId } = useData();
     return (
         <section class="section">
@@ -36,7 +36,7 @@ function CartScreen() {
                                     <p>${value['itemTotal']}</p>
                                 </div>
                                 <div class="column is-2 has-text-centered">
-                                    <button class="button is-danger is-small">
+                                    <button class="button is-danger is-small" onClick={()=>{removeItemFromCart(value.id)}}>
                                         Remove
                                     </button>
                                 </div>
