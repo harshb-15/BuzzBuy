@@ -1,10 +1,22 @@
 import { useData } from '../providers/DataProvider';
+import { useSearch } from '../providers/SearchProvider';
+import { useSortOrder } from '../providers/SortOrderProvider';
 import ItemCard from './ItemCard';
 
 function ItemCarousel({ filterFunction = (f) => f, sortFunction = (f) => f }) {
     const { data } = useData();
+    const { sortOrder } = useSortOrder();
+    const { search } = useSearch();
     var presentableData = filterFunction(data);
-    presentableData = sortFunction(presentableData);
+    sortFunction(presentableData, sortOrder);
+    presentableData = presentableData.filter((item) => {
+        if (item.title.toLowerCase().includes(search.toLowerCase()))
+        {
+            return item;
+        } 
+        return null;
+    });
+    
     return (
         <div className="column columns is-multiline">
             {presentableData.map((value, i) => (

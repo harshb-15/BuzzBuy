@@ -15,8 +15,15 @@ function CheckedCategoriesProvider({ children }) {
         }
         setCheckedCategories(newCheckedCategories);
     }
+    function onCategoryPage(category)
+    {
+        var newCheckedCategories = [category];
+        setCheckedCategories(newCheckedCategories);
+    }
     return (
-        <CheckedCategoriesContext.Provider value={{ checkedCategories, onCategoryClick }}>
+        <CheckedCategoriesContext.Provider
+            value={{ checkedCategories, onCategoryClick, onCategoryPage }}
+        >
             {children}
         </CheckedCategoriesContext.Provider>
     );

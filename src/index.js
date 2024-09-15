@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import DataProvider from './providers/DataProvider';
 import { BrowserRouter as Router } from 'react-router-dom';
 import CartProvider from './providers/CartProvider';
+import SortOrderProvider from './providers/SortOrderProvider';
+import SearchProvider from './providers/SearchProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +15,11 @@ root.render(
         <Router>
             <DataProvider>
                 <CartProvider>
-                    <App />
+                    <SortOrderProvider>
+                        <SearchProvider>
+                            <App />
+                        </SearchProvider>
+                    </SortOrderProvider>
                 </CartProvider>
             </DataProvider>
         </Router>

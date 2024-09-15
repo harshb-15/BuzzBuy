@@ -3,7 +3,7 @@ function CategoryFilter({name, categories, onSelectCategroy = f=>f})
 {
     return (
         <>
-            <div class="box">
+            <div class="mb-2">
                 <aside class="menu">
                     <p class="menu-label has-text-weight-bold">{name}</p>
                     <ul class="menu-list">

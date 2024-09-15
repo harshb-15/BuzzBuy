@@ -4,6 +4,7 @@ import SearchTools from './SearchTools';
 
 function MainBody() {
     const { checkedCategories } = useCheckedCategories();
+    
     const filterFunction = (data) => {
         if (checkedCategories.length === 0) {
             return [...data];
@@ -13,10 +14,23 @@ function MainBody() {
             );
         }
     };
+    const sortFunction = (data, order) =>
+    {
+        if (order === 'l2h')
+        {
+            data.sort((a, b) => a.price - b.price);
+        } else if (order === 'h2l')
+        {
+            data.sort((a, b) => b.price - a.price );
+        } else if (order === 'r')
+        {
+            data.sort((a, b) => b.rating.rate - a.rating.rate);
+        }
+    }
     return (
         <div className="columns">
             <SearchTools></SearchTools>
-            <ItemCarousel filterFunction={filterFunction}></ItemCarousel>
+            <ItemCarousel filterFunction={filterFunction} sortFunction={sortFunction}></ItemCarousel>
         </div>
     );
 }

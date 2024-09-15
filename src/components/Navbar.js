@@ -1,20 +1,33 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSearch } from '../providers/SearchProvider';
+
 function Navbar() {
+    const [isSearchVisible, setSearchVisible] = useState(false);
+    const { setSearchQuery } = useSearch();
+    // Toggle the search bar visibility
+    const toggleSearch = () => {
+        setSearchVisible(!isSearchVisible);
+    };
+
     return (
         <>
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                    <a class="navbar-item" href="https://bulma.io">
+            <nav
+                className="navbar"
+                role="navigation"
+                aria-label="main navigation"
+            >
+                <div className="navbar-brand">
+                    <a className="navbar-item" href="https://bulma.io">
                         <img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRglzmij2kpJ0PgDDJGZS6CnebD5HVIgO0MkXRPEjR8mUay7QltmsjAWdqzJiHjGTnE8iw"
                             alt="logo"
-                        ></img>
+                        />
                     </a>
 
                     <a
                         role="button"
-                        class="navbar-burger"
+                        className="navbar-burger"
                         aria-label="menu"
                         aria-expanded="false"
                         data-target="navbarBasicExample"
@@ -26,27 +39,31 @@ function Navbar() {
                     </a>
                 </div>
 
-                <div id="navbarBasicExample" class="navbar-menu">
-                    <div class="navbar-start">
-                        <a class="navbar-item">Men</a>
-                        <a class="navbar-item">Women</a>
-                        <a class="navbar-item">Headwear</a>
-                        <a class="navbar-item">Accessories</a>
-                        <a class="navbar-item">Kids</a>
-                        <a class="navbar-item">Sale</a>
-                        <a class="navbar-item">About</a>
-                        <a class="navbar-item">Journal</a>
-                    </div>
+                <div id="navbarBasicExample" className="navbar-menu">
+                    <div className="navbar-start"></div>
 
-                    <div class="navbar-end">
-                        <a class="navbar-item">Search</a>
-                        <Link to="cart" class="navbar-item">
+                    <div className="navbar-end">
+                        {isSearchVisible && (
+                            <div className="navbar-item">
+                                <input
+                                    className="input"
+                                    type="text"
+                                    placeholder="Search..."
+                                    autoFocus
+                                    onChange={(e)=>setSearchQuery(e.target.value)}
+                                />
+                            </div>
+                        )}
+                        <a className="navbar-item" onClick={toggleSearch}>
+                            Search
+                        </a>
+                        <Link to="cart" className="navbar-item">
                             Cart
                         </Link>
-                        <a class="navbar-item">Sign In</a>
-                        <div class="navbar-item">
-                            <div class="buttons">
-                                <a class="button is-primary">
+                        <a className="navbar-item">Sign In</a>
+                        <div className="navbar-item">
+                            <div className="buttons">
+                                <a className="button is-primary">
                                     <strong>Create Account</strong>
                                 </a>
                             </div>
@@ -57,4 +74,5 @@ function Navbar() {
         </>
     );
 }
+
 export default Navbar;
