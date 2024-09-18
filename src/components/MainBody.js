@@ -29,7 +29,7 @@ function MainBody() {
     }
     return (
         <div className="columns">
-            <SearchTools></SearchTools>
+            <SearchTools className="is-1"></SearchTools>
             <ItemCarousel filterFunction={filterFunction} sortFunction={sortFunction}></ItemCarousel>
         </div>
     );

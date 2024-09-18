@@ -3,12 +3,8 @@ import { Link } from 'react-router-dom';
 import { useSearch } from '../providers/SearchProvider';
 
 function Navbar() {
-    const [isSearchVisible, setSearchVisible] = useState(false);
+    const [isSearchVisible] = useState(true);
     const { setSearchQuery } = useSearch();
-    // Toggle the search bar visibility
-    const toggleSearch = () => {
-        setSearchVisible(!isSearchVisible);
-    };
 
     return (
         <>
@@ -54,9 +50,6 @@ function Navbar() {
                                 />
                             </div>
                         )}
-                        <a className="navbar-item" onClick={toggleSearch}>
-                            Search
-                        </a>
                         <Link to="cart" className="navbar-item">
                             Cart
                         </Link>

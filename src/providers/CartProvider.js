@@ -1,15 +1,20 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useData } from './DataProvider';
 const CartContext = createContext();
-
+const initCart = {
+    items: [],
+    cartTotal: 0,
+};
+const getInitCart = () => {
+    const cart = localStorage.getItem('cart');
+    return cart ? JSON.parse(cart) : initCart;
+};
 function CartProvider({ children }) {
     const { getItemFromId } = useData();
-    const [cart, setCart] = useState({
-        items: [
-            
-        ],
-        cartTotal: 0,
-    });
+    const [cart, setCart] = useState(getInitCart);
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
     function checkItemInCart(itemId) {
         let foundInCart = -1;
         const cartLength = cart['items'].length;
@@ -51,17 +56,18 @@ function CartProvider({ children }) {
         });
         return newCartTotal;
     }
-    function removeItemFromCart(itemId)
-    {
+    function removeItemFromCart(itemId) {
         let newCart = { ...cart };
         let newItems = newCart.items.filter((val, i) => val.id !== itemId);
         newCart.items = newItems;
         let newCartTotal = findNewTotal(newCart);
         newCart.cartTotal = newCartTotal;
         setCart(newCart);
-    } 
+    }
     return (
-        <CartContext.Provider value={{ cart, addItemToCart, removeItemFromCart, checkItemInCart}}>
+        <CartContext.Provider
+            value={{ cart, addItemToCart, removeItemFromCart, checkItemInCart }}
+        >
             {children}
         </CartContext.Provider>
     );
