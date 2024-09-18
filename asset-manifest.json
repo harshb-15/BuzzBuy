@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/BuzzBuy/static/css/main.360c3b61.css",
-    "main.js": "/BuzzBuy/static/js/main.1a0fbf74.js",
+    "main.js": "/BuzzBuy/static/js/main.26415ded.js",
     "static/js/453.af178710.chunk.js": "/BuzzBuy/static/js/453.af178710.chunk.js",
     "index.html": "/BuzzBuy/index.html",
     "main.360c3b61.css.map": "/BuzzBuy/static/css/main.360c3b61.css.map",
-    "main.1a0fbf74.js.map": "/BuzzBuy/static/js/main.1a0fbf74.js.map",
+    "main.26415ded.js.map": "/BuzzBuy/static/js/main.26415ded.js.map",
     "453.af178710.chunk.js.map": "/BuzzBuy/static/js/453.af178710.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.360c3b61.css",
-    "static/js/main.1a0fbf74.js"
+    "static/js/main.26415ded.js"
   ]
 }
