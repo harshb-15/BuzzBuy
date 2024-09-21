@@ -14,7 +14,7 @@ function Navbar() {
                 aria-label="main navigation"
             >
                 <div className="navbar-brand">
-                    <a className="navbar-item" href="https://bulma.io">
+                    <a className="navbar-item">
                         <img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRglzmij2kpJ0PgDDJGZS6CnebD5HVIgO0MkXRPEjR8mUay7QltmsjAWdqzJiHjGTnE8iw"
                             alt="logo"
@@ -53,14 +53,7 @@ function Navbar() {
                         <Link to="cart" className="navbar-item">
                             Cart
                         </Link>
-                        <a className="navbar-item">Sign In</a>
-                        <div className="navbar-item">
-                            <div className="buttons">
-                                <a className="button is-primary">
-                                    <strong>Create Account</strong>
-                                </a>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </nav>
